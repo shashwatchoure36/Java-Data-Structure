@@ -170,7 +170,45 @@ public class Linked_List {
 			System.out.println("Element is not present in Linked list");
 		}
 	}
+	
+	
+	/* Searching a node and Inserting 
+	*new node after the searched node in Linked List
+	*/
+	public void searchInsertNode(int data, int num) {
+		Node newNode = new Node(num);
+		boolean flag = false;
+		Node current = head;
 
+		/*
+		 * If Linked list is empty, 
+		 * cannot search a given node
+		 */
+		if (head == null) {
+			System.out.println("Linked List is Empty");
+		} else {
+			/*
+			 * Traversing till the last node
+			 */
+			while (current != null) {
+				/*
+				 * Comparing each node with 
+				 * the given element
+				 */
+				if (current.data == data) {
+					flag = true;
+					break;
+				}
+				current = current.next;
+			}
+		}
+
+		// After finding the searched node, inserting a new node
+		if (flag == true) {
+			newNode.next = current.next;
+			current.next = newNode;
+		}
+	}
 	
 	// Displaying the linked list
 	public void display() {
@@ -185,6 +223,7 @@ public class Linked_List {
 		}
 		System.out.println();
 	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -239,6 +278,13 @@ public class Linked_List {
 		// Searching node in Linked list
 		System.out.println("Searching a Node : ");
 		l.searchNode(30);
+		System.out.println("---------------------------------------------------------");
+		
+		// Inserting node after searching a given node of the Linked list
+		System.out.println("Insertion of 40 after 30 : ");
+		l.searchInsertNode(30,40);
+		l.display();
+		System.out.println("---------------------------------------------------------");
 		
 	}
 }
